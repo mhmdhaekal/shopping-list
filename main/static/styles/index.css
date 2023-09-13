@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Bold.ttf");
+  font-weight: bold;
+}
+
+body {
+  font-family: "Inter";
+  padding-left: 2rem;
+  padding-top: 1rem;
+  position: relative;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.add-product {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  text-align: center;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: medium;
+}
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+}
+
+.center-table {
+  text-align: center;
+}
