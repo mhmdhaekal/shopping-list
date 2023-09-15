@@ -137,4 +137,4 @@ GitHub.sublime-settings
 .history
 .DS_Store
 .vscode
-.pyrightconfig.json
+pyrightconfig.json
