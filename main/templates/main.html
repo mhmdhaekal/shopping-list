@@ -1,38 +1,59 @@
 {% extends "base.html" %} {% block content %}
-<h1 class = 'title'>Shopping List Page</h1>
+    <h1 class='title'>Shopping List Page</h1>
 
-<hr>
-<h5>Name:</h5>
+    <hr>
+    <h5>Name: {{ name }}</h5>
+    <h5>Class: {{ class }}</h5>
 
-<p>{{ name }}</p>
+    <h5>Sesi Terakhir Login : {{ last_login }}</h5
+    >
+    <hr>
 
-<h5>Class:</h5>
+    <h2 style="margin-top: 50px;text-align: center">Daftar Produk</h2>
 
-<p>{{class}}</p>
-<hr>
 
-<table border=2>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Data Added</th>
-  </tr>
+    <div class="products">
+        <table class="product-table">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Data Added</th>
+            </tr>
 
-  {% for product in products %}
-  <tr>
-    <td>{{product.name}}</td>
-    <td class ="center-table">{{product.price}}</td>
-    <td>{{product.description}}</td>
-    <td class="center-table">{{product.date_added}}</td>
-  </tr>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td class="description-table">{{ product.description }}</td>
+                    <td>{{ product.date_added }}</td>
+                </tr>
 
-  {% endfor %}
-</table>
+            {% endfor %}
+        </table>
+    </div>
 
-<br />
 
-<a href="{% url "main:create_product" %}">
-    <button class="add-product">Add New Product</button>
-</a>
+    <br/>
+
+
+    <div class="button-section">
+
+        <div class="product-button">
+            <a href="{% url "main:create_product" %}">
+                <button class="button">Add New Product</button>
+            </a>
+        </div>
+
+        <div class="logout-button">
+            <a href="{% url 'main:logout' %}">
+                <button class="button">
+                    Logout
+                </button>
+            </a>
+        </div>
+    </div>
+
+
+
 {% endblock content %}
