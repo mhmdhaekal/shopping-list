@@ -29,6 +29,7 @@ PRODUCTION = env.bool("PRODUCTION", False)
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://shopping-list-haekal.fly.dev']
 
 # Application definition
 
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django_extensions',
+    "django_extensions",
     "main",
 ]
 
