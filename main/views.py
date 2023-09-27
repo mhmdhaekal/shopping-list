@@ -25,7 +25,7 @@ def show_main(request):
     }
     return render(request, "main.html", context)
 
-
+@login_required(login_url="/login")
 def create_product(request):
     form = ProductForm(request.POST or None)
 
@@ -101,3 +101,20 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+@login_required(login_url="/login")
+def edit_product(request, id):
+    product = Product.objects.get(pk = id)
+    form = ProductForm(request.POST or None, instance=product)
+    
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+    context = {"form" : form}
+    return render(request, "edit-product.html", context)
+    
+@login_required(login_url="/login")
+def delete_product(request, id):
+    product = Product.objects.get(pk = id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
