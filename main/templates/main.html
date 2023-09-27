@@ -1,59 +1,91 @@
 {% extends "base.html" %} {% block content %}
-    <h1 class='title'>Shopping List Page</h1>
-
-    <hr>
-    <h5>Name: {{ name }}</h5>
-    <h5>Class: {{ class }}</h5>
-
-    <h5>Sesi Terakhir Login : {{ last_login }}</h5
-    >
-    <hr>
-
-    <h2 style="margin-top: 50px;text-align: center">Daftar Produk</h2>
 
 
-    <div class="products">
-        <table class="product-table">
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Data Added</th>
-            </tr>
+    <nav class="navbar bg-dark">
+        <div class="container-fluid">
+        <a href="{% url 'main:show_main'%}" class="navbar-brand text-white font-weight-bold">{{name}}</a>
+        <a href="{% url 'main:logout' %}">
+            <button class="btn btn-primary">
+                Logout
+            </button>
+        </a>
+        </div>
+    </nav>
 
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td class="description-table">{{ product.description }}</td>
-                    <td>{{ product.date_added }}</td>
-                </tr>
+    <div class="p-2">
 
-            {% endfor %}
-        </table>
+        <h1 class='title'>Shopping List Page</h1>
+        <hr>
+        <h5 class='info'>Username: {{ name }}</h5>
+        <h5 class='info'>Class: {{ class }}</h5>
+    
+        <h5 class='info'>Sesi Terakhir Login : {{ last_login }}</h5
+        >
+        <hr>
+    
+        <h2 style="margin-top: 50px;text-align: center;font-size:large;font-weight:bold;">Daftar Produk</h2>
+    
+    
+        <div class="products">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Name</th>
+                        <th scope="col" class="text-center">Price</th>
+                        <th scope="col" class="text-center">Description</th>
+                        <th scope="col" class="text-center">Data Added</th>
+                        <th scope='col' class="text-center">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for product in products %}
+                        <tr scope="row">
+                            <td class='text-center'>{{ product.name }}</td>
+                            <td class='text-center'>{{ product.price }}</td>
+                            <td class="">{{ product.description }}</td>
+                            <td class='text-center'>{{ product.date_added }}</td>
+                            <td>
+                                <div class='d-flex flex-row gap-4 justify-content-center'>
+                                    <a href="{% url 'main:edit_product' product.pk %}">
+                                        <button class='btn btn-primary'>
+                                            Edit
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'main:delete_product' product.pk %}">
+                                        <button class='btn btn-primary'>
+                                            Delete
+                                        </button>
+                                    </a>
+                                </div>
+                               
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+    
+        <br/>
+    
+    
+        <div class="button-section">
+    
+            <div class="product-button">
+                <a href="{% url "main:create_product" %}">
+                    <button class="btn btn-primary">Add New Product</button>
+                </a>
+            </div>
+    
+            <div class="logout-button">
+              
+            </div>
+        </div>
+    
+    
+    
     </div>
 
-
-    <br/>
-
-
-    <div class="button-section">
-
-        <div class="product-button">
-            <a href="{% url "main:create_product" %}">
-                <button class="button">Add New Product</button>
-            </a>
-        </div>
-
-        <div class="logout-button">
-            <a href="{% url 'main:logout' %}">
-                <button class="button">
-                    Logout
-                </button>
-            </a>
-        </div>
-    </div>
-
-
-
+   
 {% endblock content %}
