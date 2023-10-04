@@ -114,7 +114,7 @@
         document.getElementById("product_table").innerHTML = htmlString
         products.forEach((item) => {
             document.getElementById(`edit-${item.pk}`).onclick = () => {
-                fetch (`edit-product/${item.pk}`)
+                window.location.href = `edit-product/${item.pk}`    
             }
             document.getElementById(`delete-${item.pk}`).onclick = () => {
                 fetch(`delete/${item.pk}`).then(refreshProducts)
