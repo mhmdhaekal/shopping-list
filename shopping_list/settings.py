@@ -29,6 +29,8 @@ PRODUCTION = env.bool("PRODUCTION", False)
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["http://muhammad-haekal22-tutorial.pbp.cs.ui.ac.id"]
+
 
 # Application definition
 
