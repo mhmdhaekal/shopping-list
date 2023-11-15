@@ -13,6 +13,7 @@ from main.views import (
     delete_product,
     get_product_json,
     add_product_ajax,
+    create_product_flutter,
 )
 
 app_name = "main"
@@ -31,4 +32,5 @@ urlpatterns = [
     path("delete/<int:id>", delete_product, name="delete_product"),
     path("get-product/", get_product_json, name="get_product_json"),
     path("create-product-ajax/", add_product_ajax, name="add_product_ajax"),
+    path("create-flutter/", create_product_flutter, name="create_product_flutter"),
 ]

@@ -22,15 +22,11 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY . /code
 
-ENV SECRET_KEY "hIaew0VaGrxZccY3Kelrh9k6Zw9uwW6PavYSdJs94gHSski56j"
+ENV SECRET_KEY "2FR7y7xMRbuj49GJvjUlXjJC7I10qNKCw8LCeBfa661OeGYuY3"
 ENV DJANGO_SETTINGS_MODULE=shopping_list.settings
 ENV PRODUCTION=TRUE
 ENV DATABASE_URL=$DATABASE_URL
-
 RUN python manage.py collectstatic --noinput
-
-
-
 
 EXPOSE 8000
 

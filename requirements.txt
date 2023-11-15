@@ -6,3 +6,4 @@ requests
 urllib3
 django-environ
 django-extensions
+django-cors-headers
