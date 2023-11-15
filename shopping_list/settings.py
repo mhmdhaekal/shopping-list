@@ -29,7 +29,7 @@ PRODUCTION = env.bool("PRODUCTION", False)
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://shopping-list-haekal.fly.dev']
+CSRF_TRUSTED_ORIGINS = ["https://shopping-list-haekal.fly.dev"]
 
 # Application definition
 
@@ -42,7 +42,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "main",
+    "authentication",
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SAMESITE = "None"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -121,8 +129,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "static/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
